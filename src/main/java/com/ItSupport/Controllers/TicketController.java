@@ -1,13 +1,16 @@
 package com.ItSupport.Controllers;
 
+import com.ItSupport.DTO.TicketDTO;
+import com.ItSupport.Mappers.TicketMapper;
 import com.ItSupport.Models.Ticket;
 import com.ItSupport.Services.TicketService;
+import com.ItSupport.exception.TicketNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/tickets")
@@ -16,31 +19,42 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
+    @Autowired
+    private TicketMapper ticketMapper;
+
     @GetMapping("/show")
-    public ResponseEntity<List<Ticket>> getAllTickets() {
+    public ResponseEntity<List<TicketDTO>> getAllTickets() {
         List<Ticket> tickets = ticketService.getAllTickets();
-        return ResponseEntity.ok(tickets);
+        return ResponseEntity.ok(ticketMapper.toDto(tickets));
     }
 
     @PostMapping("/add")
-    public Ticket addTicket(@RequestBody Ticket ticket) {
-        return ticketService.addTicket(ticket);
+    public ResponseEntity<TicketDTO> createTicket(@RequestBody TicketDTO ticketDTO) {
+        var createdTicket = ticketService.createTicket(ticketDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ticketMapper.toDto(createdTicket));
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Ticket> getTicketById(@PathVariable Long id) {
-        Optional<Ticket> ticket = ticketService.getTicketById(id);
-        return ticket.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<TicketDTO> getTicketById(@PathVariable Long id) {
+        var ticket = ticketService.getTicketById(id);
+        return ResponseEntity.ok(ticketMapper.toDto(ticket));
+    }
+
+    @GetMapping("/status/{statut}")
+    public ResponseEntity<List<TicketDTO>> getTicketByStatut(@PathVariable String statut) {
+        List<Ticket> tickets = ticketService.getTicketsByStatut(statut);
+        return ResponseEntity.ok(ticketMapper.toDto(tickets));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Ticket> updateTicket(@PathVariable Long id, @RequestBody Ticket updatedTicket) {
+    public ResponseEntity<?> updateTicket(@PathVariable Long id, @RequestBody TicketDTO updatedTicketDto) {
         try {
-            Ticket ticket = ticketService.updateTicket(id, updatedTicket);
-            return ResponseEntity.ok(ticket);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            var existingTicket = ticketService.getTicketById(id);
+            var updatedTicket = ticketMapper.partialUpdate(updatedTicketDto, existingTicket);
+            ticketService.updateTicket(id, updatedTicketDto);
+            return ResponseEntity.ok(ticketMapper.toDto(updatedTicket));
+        } catch (TicketNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
