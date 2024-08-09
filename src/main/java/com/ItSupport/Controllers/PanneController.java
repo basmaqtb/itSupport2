@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pannes")
+//@RequestMapping("/pannes")
 public class PanneController {
 
     @Autowired
@@ -23,13 +23,13 @@ public class PanneController {
     @Autowired
     private PanneMapper panneMapper;
 
-    @GetMapping("/show")
+    @GetMapping("/pannes/show")
     public ResponseEntity<List<PanneDTO>> getAllPannes() {
         List<Panne> pannes = panneService.getAllPannes();
         return ResponseEntity.ok(panneMapper.toDto(pannes));
     }
 
-    @PostMapping("/add")
+    @PostMapping("/pannes/add")
     public ResponseEntity<PanneDTO> createPanne(@RequestBody PanneDTO panneDTO) {
         var createdPanne = panneService.createPanne(panneDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(panneMapper.toDto(createdPanne));
@@ -46,9 +46,9 @@ public class PanneController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updatePanne(@PathVariable Long id, @RequestBody PanneDTO updatedPanneDTO) {
+    public ResponseEntity<?> updatePanne(@PathVariable("id") Long id, @RequestBody PanneDTO updatedPanneDTO) {
         try {
-            var panne = panneService.updatePanne(Long.valueOf(id), updatedPanneDTO);
+            var panne = panneService.updatePanne(id, updatedPanneDTO);
             return ResponseEntity.ok(panne);
         } catch (PanneNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
