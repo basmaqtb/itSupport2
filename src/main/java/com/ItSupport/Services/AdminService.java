@@ -30,7 +30,7 @@ public class AdminService {
         return adminRepository.findById(id)
                 .map(admin -> {
                     admin.setNom(updatedAdmin.getNom());
-                    admin.setEmail(updatedAdmin.getEmail());
+                    admin.setUsername(updatedAdmin.getUsername());
                     return adminRepository.save(admin);
                 })
                 .orElseThrow(() -> new RuntimeException("Admin non trouvé avec ID : " + id));

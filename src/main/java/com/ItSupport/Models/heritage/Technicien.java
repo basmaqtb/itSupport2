@@ -5,32 +5,32 @@ import com.ItSupport.Models.Ticket;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Builder
-@Setter
 @Getter
+@Setter
 @Entity
-public class Utilisateur extends Personne {
+public class Technicien extends Personne {
 
-    @OneToMany(mappedBy = "utilisateur" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "technicien" , cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
-    public Utilisateur(Long id, String nom, String username, String password, Role role, List<Ticket> tickets) {
+    public Technicien(Long id, String nom, String username, String password, Role role, List<Ticket> tickets) {
         super(id, nom, username, password, role);
         this.tickets = tickets;
-        this.setRole(Role.USER);
+        this.setRole(Role.TECHNICIEN);
     }
 
-    public Utilisateur(List<Ticket> tickets) {
+    public Technicien(List<Ticket> tickets) {
         this.tickets = tickets;
         this.setRole(Role.USER);
     }
 
-    public Utilisateur(){
+    public Technicien(){
         super();
-        this.setRole(Role.USER);
+        this.setRole(Role.TECHNICIEN);
     }
 }

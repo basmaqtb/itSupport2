@@ -42,7 +42,8 @@ public class PanneService {
     }
 
     public Panne updatePanne(Long id, PanneDTO panneDTO) {
-        var panne = panneRepository.findById(id).orElseThrow(EquipmentNotFoundException::new);
+        var panne = panneRepository.findById(id).orElseThrow(PanneNotFoundException::new);
+        System.out.println("l panne ---"+panne.getDescription());
         var updatedPanne = panneMapper.partialUpdate(panneDTO,panne);
         return panneRepository.save(updatedPanne);
     }

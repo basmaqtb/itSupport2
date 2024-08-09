@@ -30,7 +30,7 @@ public class TechnicienService {
         return technicienRepository.findById(id)
                 .map(technicien -> {
                     technicien.setNom(updatedTechnicien.getNom());
-                    technicien.setEmail(updatedTechnicien.getEmail());
+                    technicien.setUsername(updatedTechnicien.getUsername());
                     // Mettez à jour les autres champs
                     return technicienRepository.save(technicien);
                 })
