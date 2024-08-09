@@ -4,6 +4,7 @@ import com.ItSupport.DTO.TicketDTO;
 import com.ItSupport.Mappers.TicketMapper;
 import com.ItSupport.Models.Ticket;
 import com.ItSupport.Services.TicketService;
+import com.ItSupport.exception.TechnicianNotFoundException;
 import com.ItSupport.exception.TicketNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,5 +63,17 @@ public class TicketController {
     public ResponseEntity<Void> deleteTicket(@PathVariable Long id) {
         ticketService.deleteTicket(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("{ticketId}/to/{technicianId}")
+    public ResponseEntity<?> assignTicketToTechnician(
+           @PathVariable("ticketId") String ticketId,
+            @PathVariable("technicianId") String technicianId) {
+        try {
+            var ticket = ticketService.assignTicketToTechnician(Long.valueOf(ticketId), Long.valueOf(technicianId));
+            return ResponseEntity.ok(ticket);
+        } catch (TicketNotFoundException | TechnicianNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }

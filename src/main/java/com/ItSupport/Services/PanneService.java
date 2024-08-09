@@ -1,12 +1,17 @@
 package com.ItSupport.Services;
 
+import com.ItSupport.DTO.EquipementDTO;
 import com.ItSupport.Dao.PanneRepository;
+import com.ItSupport.DTO.PanneDTO;
+import com.ItSupport.Mappers.PanneMapper;
+import com.ItSupport.Models.Equipement;
 import com.ItSupport.Models.Panne;
+import com.ItSupport.exception.EquipmentNotFoundException;
+import com.ItSupport.exception.PanneNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PanneService {
@@ -14,31 +19,37 @@ public class PanneService {
     @Autowired
     private PanneRepository panneRepository;
 
-    public List<Panne> getAllPannes() {
-        return panneRepository.findAll();
-    }
+    @Autowired
+    private PanneMapper panneMapper;
 
-    public Panne addPanne(Panne panne) {
+    public Panne createPanne(PanneDTO panneDto) {
+        var panne = panneMapper.toEntity(panneDto);
         return panneRepository.save(panne);
     }
 
-    public Optional<Panne> getPanneById(Long id) {
-        return panneRepository.findById(id);
+    public List<Panne> getAllPannes() {
+        var pannes = panneRepository.findAll();
+        if (pannes.isEmpty()){
+            throw new EquipmentNotFoundException();
+        }
+        return pannes;
     }
 
-    public Panne updatePanne(Long id, Panne updatedPanne) {
-        return panneRepository.findById(id)
-                .map(panne -> {
-                    panne.setDescription(updatedPanne.getDescription());
-                    panne.setDateDetection(updatedPanne.getDateDetection());
-                    panne.setEtatPannet(updatedPanne.getEtatPannet());
-                    // Mettez à jour les autres champs nécessaires
-                    return panneRepository.save(panne);
-                })
-                .orElseThrow(() -> new RuntimeException("Panne non trouvée avec ID : " + id));
+    public PanneDTO getPanneById(Long id) {
+        var panne = panneRepository.findById(id)
+                .orElseThrow(() -> new PanneNotFoundException());
+        return panneMapper.toDto(panne);
+    }
+
+    public Panne updatePanne(Long id, PanneDTO panneDTO) {
+        var panne = panneRepository.findById(id).orElseThrow(EquipmentNotFoundException::new);
+        var updatedPanne = panneMapper.partialUpdate(panneDTO,panne);
+        return panneRepository.save(updatedPanne);
     }
 
     public void deletePanne(Long id) {
-        panneRepository.deleteById(id);
+        var panne = panneRepository.findById(id)
+                .orElseThrow(() -> new PanneNotFoundException());
+        panneRepository.delete(panne);
     }
 }
