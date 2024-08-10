@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/pannes")
+@RequestMapping("/admins/pannes")
 public class PanneController {
 
     @Autowired
@@ -23,19 +23,19 @@ public class PanneController {
     @Autowired
     private PanneMapper panneMapper;
 
-    @GetMapping("/pannes/show")
+    @GetMapping("/show")
     public ResponseEntity<List<PanneDTO>> getAllPannes() {
         List<Panne> pannes = panneService.getAllPannes();
         return ResponseEntity.ok(panneMapper.toDto(pannes));
     }
 
-    @PostMapping("/pannes/add")
+    @PostMapping("/add")
     public ResponseEntity<PanneDTO> createPanne(@RequestBody PanneDTO panneDTO) {
         var createdPanne = panneService.createPanne(panneDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(panneMapper.toDto(createdPanne));
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PanneDTO> getPanneById(@PathVariable Long id) {
         try {
             var panne = panneService.getPanneById(id);
