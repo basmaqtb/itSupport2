@@ -9,7 +9,6 @@ import com.ItSupport.Models.heritage.Admin;
 import com.ItSupport.Models.heritage.Technicien;
 import com.ItSupport.Models.heritage.Utilisateur;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,17 +47,7 @@ public class AuthentificationService {
                 .build();
     }
 
-    public List<Utilisateur> getAllUser(){
-        return userdao.findAll();
-    }
 
-    public void deleteCompte(long id_user) {
-        userdao.deleteById(id_user);
-    }
-
-    public Long count(){
-        return userdao.count();
-    }
 
     public AuthenticationResponse registerUser(AuthenticationRequest request) {
       Utilisateur utilisateur = new Utilisateur();

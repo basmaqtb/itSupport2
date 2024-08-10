@@ -22,28 +22,27 @@ public class AuthenticationController {
             @RequestBody AuthenticationRequest request
     ){
         return ResponseEntity.ok(authService.authenticate(request));
-
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/signup/u")
     public ResponseEntity<AuthenticationResponse> signUpUser(
             @RequestBody AuthenticationRequest request
     ){
         return ResponseEntity.ok(authService.registerUser(request));
 
     }
-    @PostMapping("/signup")
+    @PostMapping("/signup/a")
     public ResponseEntity<AuthenticationResponse> signUpAdmn(
             @RequestBody AuthenticationRequest request
     ){
-        return ResponseEntity.ok(authService.registerUser(request));
+        return ResponseEntity.ok(authService.registerAdmin(request));
 
     }
-    @PostMapping("/signup")
+    @PostMapping("/signup/t")
     public ResponseEntity<AuthenticationResponse> signUpTechnicien(
             @RequestBody AuthenticationRequest request
     ){
-        return ResponseEntity.ok(authService.registerUser(request));
+        return ResponseEntity.ok(authService.registerTechnicien(request));
 
     }
 
