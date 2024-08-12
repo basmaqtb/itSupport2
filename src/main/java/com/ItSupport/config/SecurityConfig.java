@@ -25,11 +25,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/**").permitAll()
                                .requestMatchers("/auth/users/**").hasAuthority("USER")
-                                .requestMatchers("/auth/admins/**").hasAuthority("ADMIN")
-                        .requestMatchers("/auth/techniciens/**").hasAuthority("TECHNICIEN")
-                        .requestMatchers("/auth/techniciens/get/{id}","/auth/techniciens/show","/auth/techniciens/","/auth/techniciens/status/{statut}").permitAll()
+                                .requestMatchers("/auth/signup/u","/auth/signup/t","/auth/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("/auth/login","/auth/signup/a").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )

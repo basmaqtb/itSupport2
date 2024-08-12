@@ -1,5 +1,6 @@
 package com.ItSupport.config;
 
+import com.ItSupport.Dao.PersonneRepository;
 import com.ItSupport.Dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -18,12 +19,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository userdao;
+    private final PersonneRepository personneRepository;
 
 
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> (UserDetails) userdao.findByUsername(username)
+        return username ->  personneRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found"));
     }
 

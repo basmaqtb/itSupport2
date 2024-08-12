@@ -2,7 +2,8 @@ package com.ItSupport.Controllers;
 
 import com.ItSupport.DTO.Authen.AuthenticationRequest;
 import com.ItSupport.DTO.Authen.AuthenticationResponse;
-import com.ItSupport.Models.heritage.Utilisateur;
+import com.ItSupport.DTO.Authen.RegistreRequest;
+import com.ItSupport.Models.Enums.Role;
 import com.ItSupport.Services.AuthentificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class AuthenticationController {
     private final AuthentificationService authService;
 
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ){
@@ -26,23 +27,25 @@ public class AuthenticationController {
 
     @PostMapping("/signup/u")
     public ResponseEntity<AuthenticationResponse> signUpUser(
-            @RequestBody AuthenticationRequest request
+            @RequestBody RegistreRequest request
     ){
-        return ResponseEntity.ok(authService.registerUser(request));
+        return ResponseEntity.ok(authService.register(request, Role.USER));
 
     }
+
     @PostMapping("/signup/a")
-    public ResponseEntity<AuthenticationResponse> signUpAdmn(
-            @RequestBody AuthenticationRequest request
+    public ResponseEntity<AuthenticationResponse> signUpAdmin(
+            @RequestBody RegistreRequest request
     ){
-        return ResponseEntity.ok(authService.registerAdmin(request));
+        return ResponseEntity.ok(authService.register(request, Role.ADMIN));
 
     }
+
     @PostMapping("/signup/t")
     public ResponseEntity<AuthenticationResponse> signUpTechnicien(
-            @RequestBody AuthenticationRequest request
+            @RequestBody RegistreRequest request
     ){
-        return ResponseEntity.ok(authService.registerTechnicien(request));
+        return ResponseEntity.ok(authService.register(request, Role.TECHNICIEN));
 
     }
 

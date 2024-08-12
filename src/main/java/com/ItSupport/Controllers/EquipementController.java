@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/admins/equipements")
+@RequestMapping("/admin/equipements")
 public class EquipementController {
 
     @Autowired

@@ -15,21 +15,36 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="personne_type")
 public class Personne implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    private String username;
+    private String fullname;
+    private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(this.role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+
+    }
+
+    @Override
+    public String getUsername() {
+
+        return email;
+
     }
 
     @Override
