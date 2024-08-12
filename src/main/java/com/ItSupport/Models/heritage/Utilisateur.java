@@ -6,10 +6,11 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
-@Builder
+@SuperBuilder
 @Setter
 @Getter
 @Entity
@@ -18,8 +19,8 @@ public class Utilisateur extends Personne {
     @OneToMany(mappedBy = "utilisateur" , cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
-    public Utilisateur(Long id, String nom, String username, String password, Role role, List<Ticket> tickets) {
-        super(id, nom, username, password, role);
+    public Utilisateur(Long id,String username, String password, Role role, List<Ticket> tickets) {
+        super(id, username, password, role);
         this.tickets = tickets;
         this.setRole(Role.USER);
     }

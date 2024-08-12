@@ -29,7 +29,7 @@ public class TechnicienService {
     public Technicien updateTechnicien(Long id, Technicien updatedTechnicien) {
         return technicienRepository.findById(id)
                 .map(technicien -> {
-                    technicien.setNom(updatedTechnicien.getNom());
+                    technicien.setUsername(updatedTechnicien.getUsername());
                     technicien.setUsername(updatedTechnicien.getUsername());
                     // Mettez à jour les autres champs
                     return technicienRepository.save(technicien);

@@ -2,6 +2,7 @@ package com.ItSupport.Controllers;
 
 import com.ItSupport.DTO.Authen.AuthenticationRequest;
 import com.ItSupport.DTO.Authen.AuthenticationResponse;
+import com.ItSupport.DTO.Authen.RegisterRequest;
 import com.ItSupport.Models.heritage.Utilisateur;
 import com.ItSupport.Services.AuthentificationService;
 import lombok.RequiredArgsConstructor;
@@ -26,21 +27,21 @@ public class AuthenticationController {
 
     @PostMapping("/signup/u")
     public ResponseEntity<AuthenticationResponse> signUpUser(
-            @RequestBody AuthenticationRequest request
+            @RequestBody RegisterRequest request
     ){
         return ResponseEntity.ok(authService.registerUser(request));
 
     }
     @PostMapping("/signup/a")
     public ResponseEntity<AuthenticationResponse> signUpAdmn(
-            @RequestBody AuthenticationRequest request
+            @RequestBody RegisterRequest request
     ){
         return ResponseEntity.ok(authService.registerAdmin(request));
 
     }
     @PostMapping("/signup/t")
     public ResponseEntity<AuthenticationResponse> signUpTechnicien(
-            @RequestBody AuthenticationRequest request
+            @RequestBody RegisterRequest request
     ){
         return ResponseEntity.ok(authService.registerTechnicien(request));
 

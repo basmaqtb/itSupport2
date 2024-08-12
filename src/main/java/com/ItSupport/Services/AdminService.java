@@ -29,7 +29,7 @@ public class AdminService {
     public Admin updateAdmin(Long id, Admin updatedAdmin) {
         return adminRepository.findById(id)
                 .map(admin -> {
-                    admin.setNom(updatedAdmin.getNom());
+                    admin.setUsername(updatedAdmin.getUsername());
                     admin.setUsername(updatedAdmin.getUsername());
                     return adminRepository.save(admin);
                 })

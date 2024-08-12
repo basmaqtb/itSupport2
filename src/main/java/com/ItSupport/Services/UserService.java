@@ -29,7 +29,7 @@ public class UserService {
     public Utilisateur updateUtilisateur(Long id, Utilisateur updatedUtilisateur) {
         return userRepository.findById(id)
                 .map(utilisateur -> {
-                    utilisateur.setNom(updatedUtilisateur.getNom());
+                    utilisateur.setUsername(updatedUtilisateur.getUsername());
                     utilisateur.setUsername(updatedUtilisateur.getUsername());
                     // Mettez à jour les autres champs
                     return userRepository.save(utilisateur);

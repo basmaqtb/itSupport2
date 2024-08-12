@@ -1,5 +1,7 @@
 package com.ItSupport.Services;
 
+import com.ItSupport.DTO.Authen.PersonneDTO;
+import com.ItSupport.Models.heritage.Personne;
 import com.ItSupport.Models.heritage.Utilisateur;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -29,20 +31,20 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(Utilisateur userDetails){
+    public String generateToken(PersonneDTO userDetails){
         return generateToken(new HashMap<>(), userDetails);
     }
 
     public  String generateToken(
             Map<String, Object> extractClaim,
-            Utilisateur userDetails
+                PersonneDTO userDetails
     ){
         return Jwts
                 .builder()
                 .setClaims(extractClaim)
-                .setSubject(userDetails.getNom())
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 3))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
