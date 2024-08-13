@@ -1,0 +1,10 @@
+<div *ngIf="equipement" class="equipement-detail">
+    <h2>{{ equipement.marque }} {{ equipement.model }}</h2>
+    <p><strong>Type:</strong> {{ equipement.type }}</p>
+    <p><strong>Etat:</strong> {{ equipement.etat }}</p>
+    <a routerLink="/equipements" class="btn btn-secondary">Back to Equipements</a>
+  </div>
+  <div *ngIf="!equipement">
+    <p>Loading...</p>
+  </div>
+  

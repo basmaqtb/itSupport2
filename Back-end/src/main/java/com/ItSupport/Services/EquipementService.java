@@ -38,10 +38,10 @@ public class EquipementService {
         return equipementRepository.findById(id).orElseThrow(EquipmentNotFoundException::new);
     }
 
-    public Equipement updateEquipment(Long id, EquipementDTO equipmentDto) {
-        var equipment = equipementRepository.findById(id).orElseThrow(EquipmentNotFoundException::new);
-        var updatedEquipment = equipmentMapper.partialUpdate(equipmentDto, equipment);
-        return equipementRepository.save(updatedEquipment);
+    public Equipement updateEquipement(Long id, EquipementDTO equipementDTO){
+        var equipement = equipementRepository.findById(id).orElseThrow(EquipmentNotFoundException::new);
+        var updatedEquipement = equipmentMapper.partialUpdate(equipementDTO,equipement);
+        return equipementRepository.save(updatedEquipement);
     }
 
     public void deleteEquipment(Long id) {

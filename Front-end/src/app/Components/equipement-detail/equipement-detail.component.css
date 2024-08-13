@@ -1,0 +1,22 @@
+.equipement-detail {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .equipement-detail p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .equipement-detail strong {
+    font-weight: bold;
+  }
+  
+  .btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  

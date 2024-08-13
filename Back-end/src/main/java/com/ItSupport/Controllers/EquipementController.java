@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin/equipements")
+@CrossOrigin (origins="http://localhost:4200/")
 public class EquipementController {
 
     @Autowired
@@ -44,13 +45,12 @@ public class EquipementController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateEquipement(@PathVariable Long id, @RequestBody EquipementDTO updatedEquipement) {
+    public ResponseEntity<EquipementDTO> updateEquipement(@PathVariable Long id, @RequestBody EquipementDTO updatedEquipementDTO) {
         try {
-            var equipement = equipementService.getEquipmentById(id);
-            var updatedTechnician = equipementMapper.partialUpdate(updatedEquipement, equipement);
-            return ResponseEntity.ok(updatedTechnician);
+            var updatedEquipement = equipementService.updateEquipement(id,updatedEquipementDTO);
+            return ResponseEntity.ok(equipementMapper.toDto(updatedEquipement));
         } catch (EquipmentNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 

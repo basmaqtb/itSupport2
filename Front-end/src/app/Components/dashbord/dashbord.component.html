@@ -1,0 +1,10 @@
+<div class="dashboard-container">
+    <h2>Dashboard</h2>
+    <div *ngIf="userCount !== undefined">
+      <p>Total Users: {{ userCount }}</p>
+    </div>
+    <div *ngIf="userCount === undefined">
+      <p>Loading...</p>
+    </div>
+</div>
+  
