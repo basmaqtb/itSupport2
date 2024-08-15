@@ -1,0 +1,50 @@
+/* navbar.component.css */
+
+.navbar {
+    background-color: #343a40; /* Dark background color */
+    padding: 1rem; /* Spacing around the navbar */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem; /* Increase font size for the brand */
+    color: #ffffff; /* White text color */
+    text-transform: uppercase; /* Uppercase text for branding */
+  }
+  
+  .navbar-nav {
+    display: flex;
+    gap: 1rem; /* Spacing between nav items */
+  }
+  
+  .nav-item {
+    list-style: none; /* Remove default list style */
+  }
+  
+  .nav-link {
+    color: #ffffff; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 1rem; /* Font size for nav links */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+  }
+  
+  .nav-link:hover {
+    color: #f8f9fa; /* Lighter color on hover */
+  }
+  
+  /* Container to center align content */
+  .container {
+    display: flex;
+    justify-content: space-between; /* Space between brand and links */
+    align-items: center; /* Center align items vertically */
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column; /* Stack items vertically on small screens */
+    }
+  
+    .nav-link {
+      font-size: 1.2rem; /* Increase font size on small screens */
+    }
+  }
+  

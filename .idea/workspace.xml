@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cac9676e-f4a6-4754-b384-02067375564e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/controller/AuthentificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/dao/AuthDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/service/AuthServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/dao/FilmDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/dao/FilmDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/java/com/model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/spring-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/views/list-series.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/views/list-series.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/views/moderateur/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/views/moderateur/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-end/MovieSeries_App/src/main/webapp/index.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "basmaqtb"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/basmaqtb/itSupport2.git",
+    "accountId": "0a78aeaf-9352-4189-95d3-9d27fe02b39e"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2kbqUU2qytJLzoOpEbd4w1CKTjE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="itSupport2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="itSupport2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cac9676e-f4a6-4754-b384-02067375564e" name="Changes" comment="" />
+      <created>1723562643527</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1723562643527</updated>
+    </task>
+    <servers />
+  </component>
+</project>

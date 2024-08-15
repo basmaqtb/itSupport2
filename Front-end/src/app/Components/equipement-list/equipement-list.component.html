@@ -1,8 +1,13 @@
+
+
 <div class="equipement-list-container">
     <h2>Equipement List</h2>
     <div class="add-equipement-button">
       <a routerLink="/equipements/add" class="btn btn-primary">Add New Equipement</a>
+      <a class="nav-link" href="/login">Login</a>
+
     </div>
+
     <!-- <div class="search-container">
       <input
         type="text"
@@ -17,18 +22,18 @@
       <table class="table">
         <thead>
           <tr>
+            <th scope="col">Type</th>
             <th scope="col">Marque</th>
             <th scope="col">Model</th>
-            <th scope="col">Type</th>
             <th scope="col">Etat</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let equipement of filteredEquipements">
-            <td data-label="Marque">{{ equipement.marque }}</td>
-            <td data-label="Model">{{ equipement.model }}</td>
             <td data-label="Type">{{ equipement.type }}</td>
+            <td data-label="Marque">{{ equipement.marque }}</td>
+            <td data-label="modele">{{ equipement.modele }}</td>
             <td data-label="Etat">{{ equipement.etat }}</td>
             <td data-label="Actions">
               <button class="btn btn-danger" (click)="deleteEquipement(equipement.idEquipement)">Delete</button>

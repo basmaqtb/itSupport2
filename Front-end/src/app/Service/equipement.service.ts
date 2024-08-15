@@ -8,7 +8,7 @@ import { Equipement } from '../Module/equipement';
   providedIn: 'root'
 })
 export class EquipementService {
-  private apiUrl = 'http://localhost:8082/auth/admin/equipements'; 
+  private apiUrl = 'http://localhost:8082/admin/equipements'; 
 
   constructor(private http: HttpClient) { }
 

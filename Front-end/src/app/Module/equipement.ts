@@ -1,7 +1,7 @@
 export interface Equipement {
     idEquipement: number;
-  etat: string;
+    type: String;
   marque: string;
-  model: String;
-  type: String;
+  modele: String;
+  etat: string;
 }

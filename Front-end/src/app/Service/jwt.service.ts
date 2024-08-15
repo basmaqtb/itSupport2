@@ -1,40 +1,28 @@
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Jwt } from '../Module/Jwt';
-import { Utilisateur } from '../Module/Utilisateur';
 
+const url = ["http://localhost:8082/auth/"]
 
-const url = ["http://localhost:8080/api/v1/auth/"]
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
 
+
   constructor(private http: HttpClient) { }
 
-  // registerAdmin(singRequest: any): Observable<Jwt> {
-  //   return this.http.post<Jwt>(url + 'registerAdmin', singRequest);
-  // }
-  
   register(singRequest:any): Observable<Jwt>{
     return this.http.post<Jwt>(url+'register', singRequest)
   }
-
   login(loginRequest:any): Observable<Jwt>{
-    return this.http.post<Jwt>(url+'authenticate', loginRequest)
+    return this.http.post<Jwt>(url+'login', loginRequest)
   }
-  // Méthode pour obtenir le nombre d'utilisateurs
-  getUserCount(): Observable<number> {
+  sayHello(): Observable<any> {
     const headers = this.createAuthorizationHeader();
-    return this.http.get<number>(url + 'User/count', { headers });
-  }
-
-   // AllUser
-
-   getAllUsers(): Observable<Utilisateur[]> {
-    const headers = this.createAuthorizationHeader();
-    return this.http.get<Utilisateur[]>(url + 'Admin/affiche', { headers });
+    return this.http.get(url + 'demo', { headers });
   }
   
   private createAuthorizationHeader(): HttpHeaders | undefined {
@@ -47,10 +35,5 @@ export class JwtService {
       return undefined;
     }
   }
-
- 
-  deleteUser(id_user: number): Observable<void> {
-    const headers = this.createAuthorizationHeader();
-    return this.http.delete<void>(url + `Admin/${id_user}`, { headers });
-  }
+  
 }
